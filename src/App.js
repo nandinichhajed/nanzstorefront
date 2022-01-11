@@ -1,19 +1,9 @@
-import {Routes, Route} from "react-router-dom"
-import Home from "./core/Home"
+import React from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./App.css" 
-
-const App = () =>{
+export default function App() {
   return (
-    // Fragment 
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </>
+    <div>
+      <h1>App</h1>
+    </div>
   );
 }
-
-
-export default App;
