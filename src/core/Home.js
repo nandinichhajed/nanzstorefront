@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import Base from "./Base";
+import "../styles.css";
 
 export default function Home() {
 
@@ -26,7 +28,7 @@ export default function Home() {
     }, []);
     
     return(
-        <div>
+        <Base title="Home Page" description="Welcome to Nanz-Store">
             <h1>
                 Home Component
             </h1>
@@ -39,6 +41,6 @@ export default function Home() {
                     );
                 })}
             </div>
-        </div>
+        </Base>
     );
 }
