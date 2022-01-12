@@ -16,3 +16,5 @@ const ImageHelper = ({ product }) => {
     )
 
 }
+
+export default ImageHelper;
