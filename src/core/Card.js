@@ -1,6 +1,7 @@
 import Recat from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Navigate } from "react-router-dom";
+import { addItemToCart } from "./helper/cartHelper";
 
 const isAuthenticated = true;
 
@@ -16,6 +17,7 @@ const Card = ({
 
     const addToCart = () => {
         if (isAuthenticated) {
+          addItemToCart(product, ()=>{})
           console.log("Added to cart");
         } else {
           console.log("Please Login!");
