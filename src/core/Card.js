@@ -1,14 +1,14 @@
 import Recat from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Navigate } from "react-router-dom";
-import { addItemToCart } from "./helper/cartHelper";
+import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 
 const isAuthenticated = true;
 
 const Card = ({
     product,
     addtoCart = true,
-    removeFromCart = false,
+    removeFromCart = true,
 }) => {
 
     const cartTitle = product ? product.name : "A photo from pexels";
@@ -49,6 +49,7 @@ const Card = ({
             <button
               onClick={() => {
                 //TODO: handle this too
+                removeItemFromCart(product.id)
                 console.log("Product removed from cart");
               }}
               className="btn btn-block btn-outline-danger mt-2 mb-2"
