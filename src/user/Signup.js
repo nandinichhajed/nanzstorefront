@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Base from "../core/Base";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { signup } from "../auth/helper/index";
 
@@ -20,6 +21,63 @@ const Signup = () => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
   
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setValues({ ...values, error: false });
+
+    const response = await axios.post("/api/user/", {
+      name, email, password
+    })
+    const data = response.data;
+    if (data.email === email) {
+      setValues({
+        ...values,
+        name: "",
+        email: "",
+        password: "",
+        error: "",
+        success: true,
+      });
+    } else {
+      setValues({
+        ...values,
+        error: true,
+        success: false,
+      });
+    }
+    console.log(data)
+  };
+
+  const successMessage = () => {
+    return (
+      <div className="row">
+        <div className="col-md-6 offset-sm-3 text-left">
+          <div
+            className="alert alert-success"
+            style={{ display: success ? "" : "none" }}
+          >
+            New account created successfully.
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const errorMessage = () => {
+    return (
+      <div className="row">
+        <div className="col-md-6 offset-sm-3 text-left">
+          <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+          >
+            Check all fields again
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const signUpForm = () => {
     return (
       <div className="row">
@@ -52,7 +110,7 @@ const Signup = () => {
                 type="password"
               />
             </div>
-            <button className="btn btn-success btn-block">
+            <button className="btn btn-success btn-block" onClick={onSubmit}>
               Submit
             </button>
           </form>
@@ -63,6 +121,8 @@ const Signup = () => {
   
   return (
     <Base title="Sign Up Page" description="A signup for LCO user">
+      {successMessage()}
+      {errorMessage()}
       {signUpForm()}
       <p className="text-black text-center">
         {JSON.stringify(values)}
