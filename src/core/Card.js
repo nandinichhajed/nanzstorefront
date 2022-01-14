@@ -8,7 +8,7 @@ const isAuthenticated = true;
 const Card = ({
     product,
     addtoCart = true,
-    removeFromCart = true,
+    removeFromCart = false,
 }) => {
 
     const cartTitle = product ? product.name : "A photo from pexels";
