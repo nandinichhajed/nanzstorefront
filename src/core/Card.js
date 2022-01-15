@@ -62,7 +62,7 @@ const Card = ({
 
     return (
       <div className="card text-white bg-dark border border-info ">
-        <div className="card-header lead">{cartTitle}</div>
+        <div className="card-header text-center lead">{cartTitle}</div>
         <div className="card-body">
           <ImageHelper product={product} />
           <p className="lead bg-success font-weight-normal text-wrap">

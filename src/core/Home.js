@@ -29,9 +29,6 @@ export default function Home() {
     
     return(
         <Base title="Home Page" description="Welcome to Nanz-Store">
-            <h1>
-                Home Component
-            </h1>
             <div className="row">
                 {products.map((product, index) => {
                     return (
