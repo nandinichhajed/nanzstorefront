@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
 import Base from "./Base";
-import "../styles.css";
 import Card from "./Card";
 
 export default function Home() {

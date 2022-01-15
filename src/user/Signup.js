@@ -24,13 +24,13 @@ const Signup = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-
+  
+  try {
     const response = await axios.post("/api/user/", {
       name, email, password
     })
     const data = response.data;
-    if (data.email === email) {
-      setValues({
+    setValues({
         ...values,
         name: "",
         email: "",
@@ -38,14 +38,14 @@ const Signup = () => {
         error: "",
         success: true,
       });
-    } else {
-      setValues({
+  }
+  catch (e) {
+    setValues({
         ...values,
         error: true,
         success: false,
       });
-    }
-    console.log(data)
+  	}
   };
 
   const successMessage = () => {

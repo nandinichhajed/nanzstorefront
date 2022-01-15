@@ -15,7 +15,7 @@ const Nandini = () =>{
         <Route path="/" exact element={<Home />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/signin" exact element={<Signin />} />
-        <PrivateRoutes path="/user/dashboard" exact element={<UserDashboard />} />
+        <Route path="/user/dashboard" element={<UserDashboard />} />
       </Routes>
     </>
   );
