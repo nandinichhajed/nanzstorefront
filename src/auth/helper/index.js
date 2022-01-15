@@ -23,7 +23,7 @@ export const signin = (user) => {
       console.log(user[name]);
       formData.append(name, user[name]);
     }
-  
+// alternative of the above code  (signin function)
     // const {email, password} = user;
     // const formData = new FormData();
     // formData.append('email', email)
