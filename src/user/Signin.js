@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import Base from "../core/Base";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
 import { authenticate, isAuthenticated, signin } from "../auth/helper";
 
 const Signin = () => {
 
     const [values, setValues] = useState({
-        name: "",
-        email: "",
-        password: "",
+        name: "eleven",
+        email: "eleven@gmail.com",
+        password: "123456",
         error: "",
         success: false,
         loading: false,
@@ -20,6 +21,48 @@ const Signin = () => {
     const handleChange = (name) =>
     (event) => {
         setValues({ ...values, error: false, [name]: event.target.value });
+    };
+
+    const onSubmit = async (event) => {
+      event.preventDefault();
+      setValues({ ...values, error: false, loading:true });
+      
+      signin({ email, password })
+      .then((data) => {
+        console.log("DATA", data);
+        if (data.token) {
+          //let sessionToken = data.token;
+          authenticate(data, () => {
+            console.log("TOKKEN ADDED");
+            setValues({
+              ...values,
+              didRedirect: true,
+            });
+          });
+        } else {
+          setValues({
+            ...values,
+            loading: false,
+          });
+        }
+      })
+      .catch((e) => console.log(e));
+    };
+
+    const performRedirect = () => {
+      if (isAuthenticated()) {
+        return <Redirect to="/" />;
+      }
+    };
+  
+    const loadingMessage = () => {
+      return (
+        loading && (
+          <div className="alert alert-info">
+            <h2>Loading...</h2>
+          </div>
+        )
+      );
     };
 
     const successMessage = () => {
@@ -80,7 +123,7 @@ const Signin = () => {
                     type="password"
                   />
                 </div>
-                <button className="btn btn-success btn-block" onClick={ () => {} }>
+                <button className="btn btn-success btn-block" onClick={ onSubmit }>
                   Submit
                 </button>
               </form>
@@ -92,10 +135,14 @@ const Signin = () => {
 
   return (
     <Base title="Signin Page" description="Nanz-Store">
+      {loadingMessage()}
       {signInForm()}
+      {successMessage()}
+      {errorMessage()}
       <p className="text-center">
         {JSON.stringify(values)}
       </p>
+      {performRedirect()}
     </Base>
   );
 };
