@@ -106,7 +106,7 @@ const Signin = () => {
               <form>
                 
                 <div className="form-group">
-                  <label className="text-dark">Email</label>
+                  <label className="text-light">Email</label>
                   <input
                     className="form-control"
                     value={email}
@@ -115,7 +115,7 @@ const Signin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="text-dark">password</label>
+                  <label className="text-light">password</label>
                   <input
                     className="form-control"
                     value={password}
@@ -139,7 +139,7 @@ const Signin = () => {
       {signInForm()}
       {successMessage()}
       {errorMessage()}
-      <p className="text-center">
+      <p className="text-white text-center">
         {JSON.stringify(values)}
       </p>
       {performRedirect()}
