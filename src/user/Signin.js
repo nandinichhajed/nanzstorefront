@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Base from "../core/Base";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { authenticate, isAuthenticated, signin } from "../auth/helper";
 
 const Signin = () => {
@@ -51,7 +51,7 @@ const Signin = () => {
 
     const performRedirect = () => {
       if (isAuthenticated()) {
-        return <Redirect to="/" />;
+        return <Navigate to="/" />;
       }
     };
   
