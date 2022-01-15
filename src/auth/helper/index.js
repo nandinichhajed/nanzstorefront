@@ -20,7 +20,7 @@ export const signin = (user) => {
     const formData = new FormData();
   
     for (const name in user) {
-    //   console.log(user[name]);
+      console.log(user[name]);
       formData.append(name, user[name]);
     }
   
@@ -39,7 +39,7 @@ export const signin = (user) => {
       body: formData,
     })
       .then((response) => {
-        // console.log("SUCCESS", response);
+        console.log("SUCCESS", response);
         return response.json();
       })
       .catch((err) => console.log(err));
