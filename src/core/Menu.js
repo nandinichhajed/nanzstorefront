@@ -88,4 +88,4 @@ const Menu = ({ history, path }) => {
   );
 };
 
-export default withRouter(Menu);
+export default Menu;
