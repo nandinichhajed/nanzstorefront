@@ -7,9 +7,9 @@ import { authenticate, isAuthenticated, signin } from "../auth/helper";
 const Signin = () => {
 
     const [values, setValues] = useState({
-        name: "eleven",
-        email: "eleven@gmail.com",
-        password: "123456",
+        name: "",
+        email: "",
+        password: "",
         error: "",
         success: false,
         loading: false,
@@ -134,7 +134,7 @@ const Signin = () => {
 
 
   return (
-    <Base title="Signin Page" description="Nanz-Store">
+    <Base title="Welcome to Signin Page" description="Nanz-Store">
       {loadingMessage()}
       {signInForm()}
       {successMessage()}
