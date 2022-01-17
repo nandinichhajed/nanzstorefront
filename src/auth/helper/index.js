@@ -29,11 +29,11 @@ export const signin = (user) => {
     // formData.append('email', email)
     // formData.append('password', password)
   
-    // for (var key of formData.keys()) {
-    //   console.log("MYKEY: ", key);
-    // }
+    for (var key of formData.keys()) {
+      console.log("MYKEY: ", key);
+    }
   
-    return fetch(`${API}user/login/`, {
+    return fetch(`/api/user/login/`, {
       method: "POST",
   
       body: formData,
@@ -75,7 +75,7 @@ export const signout = (next) => {
       cartEmpty(() => {});
       //next();
   
-      return fetch(`${API}user/logout/${userId}`, {
+      return fetch(`api/user/logout/${userId}`, {
         method: "GET",
       })
         .then((response) => {
